@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\RingtoneController;
+use App\Http\Controllers\Frontend\RingtoneFrontController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,11 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/ringtones/delete/{id}',[RingtoneController::class,'destroy'])->name('ringtones.destroy');
 });
 
+    Route::get('/', [RingtoneFrontController::class,'index']);
+
+    Route::get('/ringtones/{id}/{slug}', [RingtoneFrontController::class,'show'])->name('ringtones.show');
+    Route::post('/ringtones/download/{id}', [RingtoneFrontController::class,'downloadRingtone'])->name('ringtones.download');
+    Route::get('/category/{id}', [RingtoneFrontController::class,'category'])->name('ringtones.category');
 Auth::routes([
     'register'=>false
 ]);
