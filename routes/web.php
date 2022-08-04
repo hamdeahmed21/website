@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\RingtoneController;
 use App\Http\Controllers\Frontend\RingtoneFrontController;
 use App\Http\Controllers\HomeController;
@@ -23,6 +24,13 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/ringtones/edit/{id}',[RingtoneController::class,'edit'])->name('ringtones.edit');
     Route::post('/ringtones/update/{id}',[RingtoneController::class,'update'])->name('ringtones.update');
     Route::get('/ringtones/delete/{id}',[RingtoneController::class,'destroy'])->name('ringtones.destroy');
+    Route::get('/photos',[PhotoController::class,'index'])->name('photos.index');
+    Route::get('/photos/create',[PhotoController::class,'create'])->name('photos.create');
+    Route::post('/photos/store',[PhotoController::class,'store'])->name('photos.store');
+    Route::get('/photos/edit/{id}',[PhotoController::class,'edit'])->name('photos.edit');
+    Route::post('/photos/update/{id}',[PhotoController::class,'update'])->name('photos.update');
+    Route::get('/photos/delete/{id}',[PhotoController::class,'destroy'])->name('photos.destroy');
+
 });
 
     Route::get('/', [RingtoneFrontController::class,'index']);

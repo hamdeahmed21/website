@@ -60,7 +60,7 @@
                             <a class="nav-link" href="{{ route('ringtones.index') }}">Manage Ringtones</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="">Manage Photos</a>
+                            <a class="nav-link" href="{{ route('photos.index') }}">Manage Photos</a>
                         </li>
                     @endif
                 <!-- Authentication Links -->
