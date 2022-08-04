@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\RingtoneController;
+use App\Http\Controllers\Frontend\PhotoFrontController;
 use App\Http\Controllers\Frontend\RingtoneFrontController;
 use App\Http\Controllers\HomeController;
 use Illuminate\Support\Facades\Auth;
@@ -38,6 +39,13 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/ringtones/{id}/{slug}', [RingtoneFrontController::class,'show'])->name('ringtones.show');
     Route::post('/ringtones/download/{id}', [RingtoneFrontController::class,'downloadRingtone'])->name('ringtones.download');
     Route::get('/category/{id}', [RingtoneFrontController::class,'category'])->name('ringtones.category');
+Route::get('/wallpapers',[PhotoFrontController::class,'wallpaper']);
+
+Route::post('download1/{id}',[PhotoFrontController::class,'download800x600'])->name('download1');
+Route::post('download2/{id}',[PhotoFrontController::class,'download1280x1024'])->name('download2');
+Route::post('download3/{id}',[PhotoFrontController::class,'download316x255'])->name('download3');
+Route::post('download4/{id}',[PhotoFrontController::class,'download118x95'])->name('download4');
+
 Auth::routes([
     'register'=>false
 ]);
